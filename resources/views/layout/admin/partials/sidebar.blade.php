@@ -16,7 +16,7 @@
           <span class="hide-on-collapse transition-all duration-500 ease-in-out origin-left">Dashboard</span>
         </a>
 
-        
+
 
         <a href="{{route('skills')}}"
           class="flex items-center p-3 gap-2.5 {{ request()->routeIs('skills') ? 'border border-white bg-blue-300 text-white sidebar transition-all duration-300 ease-in-out' : 'text-gray-200 hover:bg-gray-700 sidebar' }}">
@@ -32,7 +32,7 @@
 
         <a href="{{route('message')}}"
           class="flex items-center p-3 gap-2.5 {{ request()->routeIs('message') ? 'border border-white bg-blue-300 text-white sidebar transition-all duration-300 ease-in-out' : 'text-gray-200 hover:bg-gray-700 sidebar' }}">
-          <i class="fa-solid fa-diagram-message"></i>
+          <i class="fa-solid fa-message"></i>
           <span class="hide-on-collapse transition-all duration-500 ease-in-out origin-left">Message</span>
         </a>
       </div>
