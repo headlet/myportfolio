@@ -1,0 +1,1 @@
+<footer class="mt-12 text-center text-sm text-slate-500 pb-8">&copy; 2025 Ajay Bhayadyo</footer>
