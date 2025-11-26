@@ -24,23 +24,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name'       => $this->faker->firstName(),
-            'last_name'        => $this->faker->lastName(),
-            'username'         => $this->faker->unique()->userName(),
-            'email'            => $this->faker->unique()->safeEmail(),
-            'phone_number'     => $this->faker->phoneNumber(),
-            'profile_picture'  => null, 
-            'gender'           => $this->faker->randomElement(['male', 'female', 'others']),
-            'introduction'     => $this->faker->sentence(),
-            'description'      => $this->faker->paragraph(),
-            'github'           => 'https://github.com/' . $this->faker->userName(),
-            'linkedin'         => null,
-            'facebook'         => null,
-            'location'         => null,
-            'experience'       => '0 years',     
-            'project'          => '0 project', 
-            'password'         => Hash::make('password'),
-            'remember_token'   => Str::random(10),
+           
         ];
     }
 

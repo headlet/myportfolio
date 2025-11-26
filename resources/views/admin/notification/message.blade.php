@@ -23,13 +23,12 @@
                 <td class="py-3 px-5">{{$contact->message }}</td>
                 <td class="py-3 px-5">{{$contact->created_at }}</td>
 
-                <td class="py-3 px-5"><button data-id="{{ $contact->id }}"
-                        class="flex-1 px-2 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition text-center delete-btn">
+                <td class="py-3 px-5">
+                    <button data-id="{{ $contact->id }}" data-url="" class="flex-1 px-2 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition text-center delete-btn">
                         Delete
-                    </button></td>
+                    </button>
+                </td>
             </tr>
-
-
             @endforeach
         </table>
     </div>
