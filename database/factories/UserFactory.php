@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'github'           => 'https://github.com/' . $this->faker->userName(),
             'linkedin'         => null,
             'facebook'         => null,
+            'location'         => null,
             'experience'       => '0 years',     
             'project'          => '0 project', 
             'password'         => Hash::make('password'),

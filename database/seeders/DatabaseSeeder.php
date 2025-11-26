@@ -30,10 +30,11 @@ class DatabaseSeeder extends Seeder
             'introduction' => 'Passionate developer who loves building clean and modern web experiences.',
             'description'  => 'A full-stack learner focused on Laravel, UI/UX, and creating smooth performance-driven applications.',
             'github'     => 'https://github.com/headlet',
-            'linkedin'   => 'null',
+            'linkedin'   => 'https://np.linkedin.com/in/ajay-bhayadyo-a17713285',
             'facebook'   => 'null',
             'experience' => '1 year',
-            'project'    => '3 projects',
+            'project'    => '',
+            'location' => 'Nepal, Bhaktapur',
             'profile_picture' => null,
         ]);
     }

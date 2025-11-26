@@ -80,6 +80,8 @@
                 <label class="block text-gray-700 font-medium mb-1" for="facebook">Facebook</label>
                 <input type="text" id="facebook" name="facebook" class="border border-gray-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-400" value="{{old('facebook', $user->facebook)}}">
             </div>
+
+            
         </div>
 
 
@@ -96,7 +98,13 @@
                 <label class="block text-gray-700 font-medium mb-1" for="Experience">Experience</label>
                 <input type="text" id="Experience" name="experience" class="border border-gray-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-400" value="{{old('experience', $user->experience)}}">
             </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="location">Location</label>
+                <input type="text" id="location" name="location" class="border border-gray-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-400" value="{{old('location', $user->location)}}">
+            </div>
         </div>
+
 
 
         <!-- Submit Button -->

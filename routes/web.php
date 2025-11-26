@@ -7,9 +7,10 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 
-Route::get('/', [UserController::class, 'indexdata']);
+Route::get('/', [UserController::class, 'indexdata'])->name('index');
 Route::post('/message', [ContactController::class, 'store'])->name("message");
 Route::get('/allproject', [UserController::class, 'project'])->name('allproject');
+
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
@@ -42,4 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/projects/edit/{id}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
     Route::get('/projects/view/{id}', [ProjectController::class, 'show'])->name('projects.show');
+
+    //message
+    Route::get('/message', [ContactController::class, 'index'])->name('message');
 });

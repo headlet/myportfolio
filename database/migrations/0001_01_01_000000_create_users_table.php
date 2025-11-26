@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('experience');
             $table->string('project');
-            $table->string('loaction');
+            $table->string('location');
             $table->rememberToken();
             $table->timestamps();
         });

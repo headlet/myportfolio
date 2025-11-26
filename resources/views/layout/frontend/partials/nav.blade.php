@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-40 bg-transparent backdrop-blur-sm py-5 px-6 lg:px-12 ">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
+            <a href="{{route('index')}}" class="flex items-center gap-3">
                 <div
                     class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-600 to-cyan-400 flex items-center justify-center text-white font-bold">
                     AJ</div>

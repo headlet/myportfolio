@@ -29,6 +29,12 @@
           <i class="fa-solid fa-diagram-project"></i>
           <span class="hide-on-collapse transition-all duration-500 ease-in-out origin-left">Project</span>
         </a>
+
+        <a href="{{route('message')}}"
+          class="flex items-center p-3 gap-2.5 {{ request()->routeIs('message') ? 'border border-white bg-blue-300 text-white sidebar transition-all duration-300 ease-in-out' : 'text-gray-200 hover:bg-gray-700 sidebar' }}">
+          <i class="fa-solid fa-diagram-message"></i>
+          <span class="hide-on-collapse transition-all duration-500 ease-in-out origin-left">Message</span>
+        </a>
       </div>
     </div>
   </nav>

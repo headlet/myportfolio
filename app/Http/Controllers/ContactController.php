@@ -12,7 +12,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = contact::all();
+
+        return view('admin.notification.message', compact('contacts'));
     }
 
     /**
