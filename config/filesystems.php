@@ -48,7 +48,7 @@ return [
         // ],
         'public' => [
             'driver' => 'local',
-            'root' => '/home8/ajaybhay/public_html/storage',  // absolute path to public_html/storage
+            'root' => env('App_server'),  // absolute path to public_html/storage
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
