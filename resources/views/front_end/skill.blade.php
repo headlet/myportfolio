@@ -9,7 +9,7 @@
     </div>
 
     <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        @foreach($skill as $skills)
+        @foreach($skill->take(3) as $skills)
         <div class="p-6 rounded-lg btn-glass card-hover bgborder">
             <h3 class="font-semibold">{{$skills->skill_name}}</h3>
             <p class="text-sm mt-2">{{$skills->skill_category}}</p>

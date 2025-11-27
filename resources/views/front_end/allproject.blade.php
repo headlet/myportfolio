@@ -2,7 +2,7 @@
 
 @section('contents')
 <!-- Projects -->
-<section id="projects" class="pt-20">
+<section id="projects" class="pt-20 h-full">
     <h2 class="text-2xl font-semibold">Projects</h2>
     <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
