@@ -23,7 +23,7 @@
             </div>
         </article>
 
-        @foreach($project->take(5) as $projects)
+        @foreach($project as $projects)
         @if($featured_proj->id != $projects->id)
         <article class="p-5 rounded-xl btn-glass card-hover bgborder">
             <img src="{{ asset('storage/' . $projects->image) }}" alt="">

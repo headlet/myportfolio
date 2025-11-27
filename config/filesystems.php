@@ -46,10 +46,9 @@ return [
         //     'throw' => false,
         //     'report' => false,
         // ],
-
         'public' => [
             'driver' => 'local',
-            'root' => base_path('../public_html/storage'),  // points inside public_html
+            'root' => '/home8/ajaybhay/public_html/storage',  // absolute path to public_html/storage
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
