@@ -81,7 +81,7 @@
 
             // Particles on mouse move
             window.addEventListener('mousemove', e => {
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 7; i++) {
                     particles.push(new Particle(e.clientX, e.clientY));
                 }
             });
