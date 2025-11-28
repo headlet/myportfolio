@@ -14,18 +14,6 @@
             overflow-x: hidden;
         }
 
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            background: radial-gradient(circle, #ff00ff, #00ffff);
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
-            box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ff00ff;
-            z-index: 9999;
-        }
-
         #cursorCanvas {
             position: fixed;
             inset: 0;
@@ -38,110 +26,88 @@
 </head>
 
 <body class="bg-slate-900 text-slate-100" data-theme="dark">
-
-    <!-- Glow Cursor -->
-    <div class="cursor"></div>
-
     <!-- Page Content -->
     @include('layout.frontend.partials.nav')
     <main class="max-w-6xl mx-auto px-6 lg:px-12 ">
         @yield('contents')
-    
-    @include('layout.frontend.partials.footer')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
+        @include('layout.frontend.partials.footer')
 
-    <!-- Particle Canvas -->
-    <canvas id="cursorCanvas"></canvas>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="{{ asset('js/index.js') }}"></script>
 
-    <script>
-        // SMOOTH GLOW CURSOR
-        const cursor = document.querySelector('.cursor');
-        let mouse = { x: 0, y: 0 };
-        let pos = { x: 0, y: 0 };
+        <!-- Particle Canvas -->
+        <canvas id="cursorCanvas"></canvas>
 
-        document.addEventListener('mousemove', e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
+        <script>
+            // PARTICLES
+            const canvas = document.getElementById('cursorCanvas');
+            const ctx = canvas.getContext('2d');
 
-        function animateCursor() {
-            pos.x += (mouse.x - pos.x) * 0.2;
-            pos.y += (mouse.y - pos.y) * 0.2;
-            cursor.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
-            requestAnimationFrame(animateCursor);
-        }
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
 
-        animateCursor();
+            let particles = [];
 
-        // PARTICLES
-        const canvas = document.getElementById('cursorCanvas');
-        const ctx = canvas.getContext('2d');
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 5 + 3;
+                    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    this.speedX = (Math.random() - 0.5) * 2;
+                    this.speedY = (Math.random() - 0.5) * 2;
+                }
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.size *= 0.95;
+                }
 
-        let particles = [];
-
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 5 + 2;
-                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                this.speedX = (Math.random() - 0.5) * 2;
-                this.speedY = (Math.random() - 0.5) * 2;
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 15;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
 
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.size *= 0.95;
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.shadowColor = this.color;
-                ctx.shadowBlur = 15;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        // Particles on mouse move
-        window.addEventListener('mousemove', e => {
-            for (let i = 0; i < 5; i++) {
-                particles.push(new Particle(e.clientX, e.clientY));
-            }
-        });
-
-        // Extra particles on click
-        window.addEventListener('click', e => {
-            for (let i = 0; i < 20; i++) { // burst particles
-                particles.push(new Particle(e.clientX, e.clientY));
-            }
-        });
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // no overlay
-
-            particles.forEach((p, index) => {
-                p.update();
-                p.draw();
-                if (p.size < 0.5) particles.splice(index, 1);
+            // Particles on mouse move
+            window.addEventListener('mousemove', e => {
+                for (let i = 0; i < 10; i++) {
+                    particles.push(new Particle(e.clientX, e.clientY));
+                }
             });
 
-            requestAnimationFrame(animateParticles);
-        }
+            // Extra particles on click
+            window.addEventListener('click', e => {
+                for (let i = 0; i < 40; i++) { // burst particles
+                    particles.push(new Particle(e.clientX, e.clientY));
+                }
+            });
 
-        animateParticles();
-    </script>
+            function animateParticles() {
+                ctx.fillStyle = 'rgba(0,0,0,0.1)';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((p, index) => {
+                    p.update();
+                    p.draw();
+                    if (p.size < 0.5) particles.splice(index, 1);
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            animateParticles();
+        </script>
 
 </body>
 
