@@ -2,8 +2,6 @@
 @section('body')
 
 <section id='edit_content'>
-
-    <!-- Header -->
     <div class="flex items-center justify-between mb-8">
         <h1 class="text-3xl font-semibold text-gray-900">Skills</h1>
 
@@ -13,20 +11,17 @@
         </a>
     </div>
 
-    <!-- Search Bar -->
     <form action="" class="mb-6">
         <input type="text" name="search"
             class="w-full md:w-1/3 px-4 py-2.5 rounded-xl border border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 transition"
             placeholder="Search skills...">
     </form>
 
-    <!-- Skills Card Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         @foreach ($data as $value)
         <div class="bg-white rounded-xl shadow border border-gray-200 p-5 hover:shadow-lg transition flex flex-col">
 
-            <!-- Skill Header -->
             <div class="flex justify-between items-start mb-3">
                 <h2 class="text-xl font-semibold text-gray-800 skillname">{{ $value->skill_name }}</h2>
                 <span class="px-3 py-1 text-sm rounded-lg bg-gray-100 text-gray-700 skillcategory">
@@ -34,19 +29,16 @@
                 </span>
             </div>
 
-            <!-- Skill Level -->
             <p class="text-gray-600 text-sm mb-3">
                 <strong>Level:</strong> 
                 <span class="skilllevel">{{ $value->skill_level }}</span>
             </p>
 
-            <!-- Dates -->
             <div class="text-gray-500 text-xs mt-auto">
                 <p>Created: {{ $value->created_at->diffForHumans() }}</p>
                 <p>Updated: {{ $value->updated_at->diffForHumans() }}</p>
             </div>
 
-            <!-- Action Buttons -->
             <div class="mt-4 flex gap-2">
                 <button
                     class="flex-1 px-3 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition views"
@@ -111,14 +103,12 @@
     </form>
 </div>
 
-<!-- SweetAlert + jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 $(document).ready(function() {
 
-    /* DELETE */
     $(".delete-btn").click(function() {
         let id = $(this).data("id");
         let url = $(this).data("url");
@@ -158,9 +148,6 @@ $(document).ready(function() {
             }
         });
     });
-
-
-    /* EDIT POPUP */
     $('.views').click(function() {
 
         $('#edit_content').addClass('hidden');
@@ -169,17 +156,13 @@ $(document).ready(function() {
         let id = $(this).data('val');
         let card = $(this).closest('.bg-white');
 
-        // Extract values
         $('#edit-skill-name').val(card.find('.skillname').text().trim());
         $('#edit-level').val(card.find('.skilllevel').text().trim());
         $('#edit-category').val(card.find('.skillcategory').text().trim());
 
-        // Update form action
         $('#edit-form').attr('action', '/skills/edit/' + id);
     });
 
-
-    /* CLOSE FORM */
     $('.close-btn').click(function() {
         $('#edit_content').removeClass('hidden');
         $('#edit-form-container').addClass('hidden');

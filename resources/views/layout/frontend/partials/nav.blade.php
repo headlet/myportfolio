@@ -11,8 +11,8 @@
         </a>
 
         <nav class="flex flex-col md:flex-row items-center gap-6 menucontent hidden md:flex transition-all duration-300 
-    absolute md:static top-full left-0 w-full md:w-auto 
-    bg-black/20 md:bg-transparent backdrop-blur-sm shadow-md md:shadow-none p-4 md:p-0">
+    absolute md:static top-full right-0 w-[30%] md:w-auto 
+    bg-slate-900 md:bg-transparent backdrop-blur-sm shadow-md md:shadow-none p-4 md:p-0">
     <a href="#skills" class="text-sm hover:text-violet-600  hover:bg-blue-100 px-3 py-1 rounded-2xl">Skills</a>
     <a href="#projects" class="text-sm hover:text-violet-600 hover:bg-blue-100 px-3 py-1 rounded-2xl">Projects</a>
             <a href="#about" class="text-sm hover:text-violet-600 hover:bg-blue-100 px-3 py-1 rounded-2xl">About</a>

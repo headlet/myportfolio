@@ -7,8 +7,8 @@ $(document).ready(function () {
             .removeClass('bg-white text-slate-800')
             .addClass('bg-slate-900 text-slate-100');
         $('.menucontent')
-            .removeClass('bg-white/20 text-blue-600')
-            .addClass('bg-black/20 text-blue-400 ');
+            .removeClass('bg-white text-blue-600')
+            .addClass('bg-slate-900 text-blue-400 ');
         $('.mode').attr('src', '/image/light.png');
         $('.bgborder').removeClass('backdrop-blur-sm bg-black/10');
         $('.bgblack').addClass('bg-white/60');
@@ -21,7 +21,7 @@ $(document).ready(function () {
             .attr('data-theme', 'light')
             .removeClass('bg-slate-900 text-slate-100')
             .addClass('bg-white text-slate-800');
-        $('.menucontent').addClass('bg-white/20 text-blue-600').removeClass('bg-black/20 text-blue-400');
+        $('.menucontent').addClass('bg-white text-blue-600').removeClass('bg-slate-900 text-blue-400');
         $('.mode').attr('src', '/image/night-mode.png');
         $('.bgborder').addClass('backdrop-blur-sm bg-black/10');
         $('.bgblack').removeClass('bg-white/60');
@@ -39,7 +39,7 @@ $(document).ready(function () {
             $('.bgborder').addClass('backdrop-blur-sm bg-black/10');
             $('.bgblack').removeClass('bg-white/60');
             $('.bgblack').addClass('bg-black/10');
-            $('.menucontent').addClass('bg-white/20 text-blue-600').removeClass('bg-black/20 text-blue-400');
+            $('.menucontent').addClass('bg-white text-blue-600').removeClass('bg-slate-900 text-blue-400');
 
             localStorage.setItem('theme', 'light');
         } else {
@@ -50,8 +50,8 @@ $(document).ready(function () {
             $('.mode').attr('src', '/image/light.png');
             $('.bgborder').removeClass('backdrop-blur-sm bg-black/10');
             $('.menucontent')
-                .removeClass('bg-white/20 text-blue-600')
-                .addClass('bg-black/20 text-blue-400 ');
+                .removeClass('bg-white text-blue-600')
+                .addClass('bg-slate-900 text-blue-400 ');
             $('.bgblack').addClass('bg-white/60');
             $('.bgblack').removeClass('bg-black/10');
 

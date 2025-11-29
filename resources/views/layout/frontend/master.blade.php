@@ -9,20 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
-    <style>
-        body {
-            overflow-x: hidden;
-        }
-
-        #cursorCanvas {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-    </style>
 </head>
 
 <body class="bg-slate-900 text-slate-100" data-theme="dark">
@@ -32,82 +18,6 @@
         @yield('contents')
 
         @include('layout.frontend.partials.footer')
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="{{ asset('js/index.js') }}"></script>
-
-        <!-- Particle Canvas -->
-        <canvas id="cursorCanvas"></canvas>
-
-        <script>
-            // PARTICLES
-            const canvas = document.getElementById('cursorCanvas');
-            const ctx = canvas.getContext('2d');
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            let particles = [];
-
-            class Particle {
-                constructor(x, y) {
-                    this.x = x;
-                    this.y = y;
-                    this.size = Math.random() * 5 + 3;
-                    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    this.speedX = (Math.random() - 0.5) * 2;
-                    this.speedY = (Math.random() - 0.5) * 2;
-                }
-
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.size *= 0.95;
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.shadowColor = this.color;
-                    ctx.shadowBlur = 15;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            // Particles on mouse move
-            window.addEventListener('mousemove', e => {
-                for (let i = 0; i < 7; i++) {
-                    particles.push(new Particle(e.clientX, e.clientY));
-                }
-            });
-
-            // Extra particles on click
-            window.addEventListener('click', e => {
-                for (let i = 0; i < 40; i++) { // burst particles
-                    particles.push(new Particle(e.clientX, e.clientY));
-                }
-            });
-
-            function animateParticles() {
-             
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach((p, index) => {
-                    p.update();
-                    p.draw();
-                    if (p.size < 0.5) particles.splice(index, 1);
-                });
-
-                requestAnimationFrame(animateParticles);
-            }
-
-            animateParticles();
-        </script>
 
 </body>
 
