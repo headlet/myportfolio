@@ -46,4 +46,5 @@ Route::middleware('auth')->group(function () {
 
     //message
     Route::get('/message', [ContactController::class, 'index'])->name('message');
+    Route::delete('/message/{contact}', [ContactController::class, 'destroy'])->name('contdelete');
 });

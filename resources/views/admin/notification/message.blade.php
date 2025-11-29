@@ -39,7 +39,7 @@
 
             <!-- Actions -->
             <div class="mt-4">
-                <button data-id="$contact->id " data-url=" route('contacts.delete', $contact->id) "
+                <button data-id="{{$contact->id }}" data-url=" {{route('contdelete', $contact->id)}} "
                     class="delete-btn px-3 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
                     Delete
                 </button>
@@ -55,7 +55,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- <script>
+<script>
 $(document).ready(function() {
 
     $(".delete-btn").click(function() {
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
                     success: function(response) {
                         if (response.status === "success") {
-                            Swal.fire("Deleted!", "Message removed.", "success");
+                            Swal.fire("Deleted!", response.message);
                             card.fadeOut(300);
                         } else {
                             Swal.fire("Error", response.message, "error");
@@ -98,6 +98,7 @@ $(document).ready(function() {
     });
 
 });
-</script> -->
+</script>
+
 
 @endsection
